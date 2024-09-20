@@ -14,6 +14,7 @@ public class User {
     private Long id;
 
     private String username;
+    private String role;
     private String password;
     private String email;
 }

@@ -21,6 +21,16 @@ public class UserController {
         this.userService = userService;
     }
 
+    @GetMapping("/")
+    public String home() {
+        return "index";
+    }
+    @GetMapping("/contact")
+    public String contact() {
+        return "contact";
+    }
+
+
     @GetMapping("/signup")
     public String showSignupForm(Model model) {
         model.addAttribute("user", new User());
@@ -33,9 +43,9 @@ public class UserController {
         return "redirect:/login";
     }
 
-    @GetMapping("/index")
+    @GetMapping("/dashboard")
     public String showIndexPage(Model model, Authentication authentication) {
-        model.addAttribute("username", authentication.getName());
-        return "index";
+        model.addAttribute("email", authentication.getName());
+        return "dashboard";
     }
 }

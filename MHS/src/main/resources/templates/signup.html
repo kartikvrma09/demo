@@ -1,22 +1,104 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
-  <title>Signup Page</title>
+    <meta charset="UTF-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <link rel="stylesheet" th:href="@{/css/patient.css}">
+    <script defer th:src="@{/js/patient.js}"></script>
+    <title>Register</title>
+    <style>
+        .error {
+            color: red;
+        }
+
+        .success {
+            color: green;
+        }
+
+        .valid {
+            border: 2px solid green;
+        }
+
+        .invalid {
+            border: 2px solid red;
+        }
+
+        #message {
+            font-size: 1rem;
+            margin-top: 10px;
+        }
+
+        .valid-message {
+            color: green;
+        }
+
+        .invalid-message {
+            color: red;
+        }
+
+        .container {
+            width: 100vw;
+        }
+
+        .redirect-link {
+            padding: 15px 30px;
+            font-size: 18px;
+            color: #fff;
+            background-color: #0056b3;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .redirect-link:hover {
+            background-color: #004494;
+        }
+
+        .container {
+            /* height: 95vh; */
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            flex-direction: column;
+        }
+    </style>
 </head>
+
 <body>
-<h2>User Signup</h2>
-
-<form th:action="@{/signup}" th:object="${user}" method="post">
-  <label for="username">Username:</label>
-  <input type="text" id="username" th:field="*{username}" required><br/>
-
-  <label for="password">Password:</label>
-  <input type="password" id="password" th:field="*{password}" required><br/>
-
-  <label for="email">Email:</label>
-  <input type="email" id="email" th:field="*{email}" required><br/>
-
-  <button type="submit">Signup</button>
-</form>
+<div class="container">
+    <a class="redirect-link" href=".">Go to Home Page</a>
+    <form id="form" method="post" th:action="@{/signup}" th:object="${user}">
+        <h1>Register</h1>
+        <div class="input-group">
+            <label for="username">Username:</label>
+            <input id="username" required th:field="*{email}" type="text"><br/>
+            <div class="error"></div>
+        </div>
+        <div class="input-group">
+            <label for="email">Email:</label>
+            <input id="email" required th:field="*{username}" type="email"><br/>
+            <p id="e_Message"></p>
+            <div class="error"></div>
+        </div>
+        <div class="input-group">
+            <label for="password">Password:</label>
+            <input id="password" onkeyup="validatePasswords()" required th:field="*{password}" type="password"><br/>
+            <div class="error"></div>
+        </div>
+        <div class="input-group">
+            <label for="cpassword">Confirm Password</label>
+            <input id="cpassword" name="cpassword" onkeyup="validatePasswords()" required type="password">
+            <br>
+            <p id="message"></p>
+            <div class="error"></div>
+        </div>
+        <button type="submit">Signup</button>
+    </form>
+</div>
 </body>
 </html>
+

@@ -53,7 +53,7 @@ h1 {
     font-size: 20px;
     margin-top: 5px;
     padding: 10px;
-    /*border: 1px solid #bfbfbf(34, 193, 195);*/
+    border: 1px solid #bfbfbf(34, 193, 195);
 }
 
 .input-group input:focus {

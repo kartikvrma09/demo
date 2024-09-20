@@ -2,18 +2,67 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Login Page</title>
+
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Login Form</title>
+
+    <link rel="stylesheet" th:href="@{/css/login.css}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+
+
 </head>
 <body>
-<h2>Login</h2>
 
-<form th:action="@{/login}" method="post">
-    <label for="username">Username:</label>
-    <input type="text" id="username" name="username" required><br/>
 
-    <label for="password">Password:</label>
-    <input type="password" id="password" name="password" required><br/>
+<div class="wrapper">
+    <div class="container">
+        <a class="redirect-link" href=".">Go to Home Page</a>
 
-    <button type="submit">Login</button>
-</form>
+    </div>
+    <header>Login Form</header>
+    <form method="post" th:action="@{/login}">
+        <!--        <label for="username">Username:</label>-->
+        <!--        <input type="text" id="username" name="username" required><br/>-->
+
+        <!--        <label for="password">Password:</label>-->
+        <!--        <input type="password" id="password" name="password" required><br/>-->
+
+        <!--        <button type="submit">Login</button>-->
+        <div class="field email">
+            <div class="input-area">
+                <input id="username" name="username" required type="text" placeholder="Email Address">
+                <i class="icon fas fa-envelope"></i>
+                <i class="error error-icon fas fa-exclamation-circle"></i>
+            </div>
+            <div class="error error-txt">Email can't be blank</div>
+        </div>
+        <div class="field password">
+            <div class="input-area">
+
+                <input id="password" name="password" required type="password" placeholder="Password">
+                <i class="icon fas fa-lock"></i>
+                <i class="error error-icon fas fa-exclamation-circle"></i>
+            </div>
+            <div class="error error-txt">Password can't be blank</div>
+        </div>
+        <div class="pass-txt"><a href="#">Forgot password?</a></div>
+        <input type="submit" value="Login">
+    </form>
+    <div class="sign-txt">Not yet member? <a href="/signup">Signup now</a></div>
+</div>
+
+<script th:src="@{/js/login.js}"></script>
+
+
+<!--<form th:action="@{/login}" method="post">-->
+<!--    <label for="username">Username:</label>-->
+<!--    <input type="text" id="username" name="username" required><br/>-->
+
+<!--    <label for="password">Password:</label>-->
+<!--    <input type="password" id="password" name="password" required><br/>-->
+
+<!--    <button type="submit">Login</button>-->
+<!--</form>-->
 </body>
 </html>
